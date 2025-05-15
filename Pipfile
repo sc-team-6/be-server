@@ -1,0 +1,41 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+requests = "*"
+fastapi-utils = "*"
+python-dotenv = "*"
+aioredis = "*"
+motor = "*"
+pyhumps = "*"
+langchain = "*"
+pypdf = "*"
+python-multipart = "*"
+typing-inspect = "*"
+pypdf2 = "*"
+PyPDF2 = "*"
+openai = "*"
+tiktoken = "*"
+passlib = "*"
+pydantic = {extras = ["email"], version = "*"}
+redis = "*"
+langchain-community = "*"
+bcrypt = "*"
+pyjwt = "*"
+
+[dev-packages]
+pre-commit = "*"
+pytest = "*"
+pytest-mock = "*"
+pytest-asyncio = "*"
+flake8 = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+start = "uvicorn src.app:app --port 8000 --reload"
