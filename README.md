@@ -9,6 +9,7 @@ Serve as the backend server for handling API requests, business logic, and datab
 
 ## Project Structure Overview
 
+<pre lang="markdown"><code>```
 src/
 ├── app.py                 # FastAPI app entrypoint
 ├── auth/                  # JWT-based authentication logic
@@ -17,11 +18,14 @@ src/
 ├── decorator/             # Custom decorators (e.g., logging, error handling)
 ├── dependencies/          # Shared dependency injection definitions
 ├── domain/                # Shared interfaces and business entity definitions
-├── middlewares/          # Custom FastAPI middlewares (e.g., CORS, logging)
+├── middlewares/           # Custom FastAPI middlewares (e.g., CORS, logging)
 ├── log/                   # Logging-related modules (e.g., saving user actions)
 ├── report/                # Report generation logic for analytics/statistics
 ├── user/                  # User management endpoints and services
 └── __init__.py
+```
+</code></pre>
+
 
 ## how to setup
 
