@@ -18,10 +18,10 @@ src/
 ├── decorator/             # Custom decorators (e.g., logging, error handling)
 ├── dependencies/          # Shared dependency injection definitions
 ├── domain/                # Shared interfaces and business entity definitions
+   ├── log/                   # Logging-related modules (e.g., saving user actions)
+   ├── report/                # Report generation logic for analytics/statistics
+   └──  user/                  # User management endpoints and services
 ├── middlewares/           # Custom FastAPI middlewares (e.g., CORS, logging)
-├── log/                   # Logging-related modules (e.g., saving user actions)
-├── report/                # Report generation logic for analytics/statistics
-├── user/                  # User management endpoints and services
 └── __init__.py
 ```
 </code></pre>
