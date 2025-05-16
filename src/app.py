@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter, Depends
 from src.middlewares.authentication import AuthMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from src.middlewares.exception_handler import register_exception_handlers
@@ -108,3 +108,18 @@ async def on_app_shutdown():
 @app.get("/api/health")
 async def health_check():
     return {"message": "FastAPI와 연결되었습니다!"}
+
+### For further application
+
+from typing import Annotated
+from random import randint
+from src.dependencies.auth import get_current_user
+
+# rank (for further application)
+@app.get("/api/rank")
+async def get_user_rank(current_user: Annotated[dict, Depends(get_current_user)]):
+    percentile = randint(20, 80)
+    return {
+        "user_id": current_user["user_id"],
+        "rank_percentile": percentile
+    }

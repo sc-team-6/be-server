@@ -2,6 +2,7 @@ from src.domain.report.repo import ReportRepository
 from src.domain.log.repo import LogRepository
 from datetime import datetime, timedelta, date
 from fastapi import HTTPException
+import random
 from collections import Counter, defaultdict
 
 class ReportService:
@@ -63,6 +64,13 @@ class ReportService:
             app_minutes[log["app_package"]] += log["total_minutes"]
         top_used_app = max(app_minutes, key=app_minutes.get) if app_minutes else None
 
+        summary = (
+            f"This week, you spent a total of {total_minutes} minutes, with an estimated scroll distance of {round(scroll_meters, 1)} meters. "
+            f"Overuse alerts were triggered on {alert_days} day(s), mainly due to '{most_warned_app}'. "
+            f"'{most_difficult_day}' was your most challenging day, and '{top_used_app}' was your most used app. "
+            "Consider managing your screen time more consciously next week."
+        )
+
         report = {
             "user_id": user_id,
             "week": week,
@@ -71,10 +79,11 @@ class ReportService:
             "most_warned_app": most_warned_app,
             "scroll_distance_m": round(scroll_meters, 1),
             "goal_achieved": alerts_total <= 3,
-            "summary": "Maintain this week, start small changes next week.",
+            "summary": summary,
             "most_difficult_day": most_difficult_day,
             "alerts_total": alerts_total,
             "top_used_app": top_used_app
         }
 
         return await ReportRepository.insert_report(report)
+    
